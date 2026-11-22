@@ -404,3 +404,104 @@ body.focus-locked .main { filter: grayscale(0.7) opacity(0.55); pointer-events: 
   .countdown-chip { padding: 5px 10px; }
   .countdown-label { display: none; }
 }
+
+/* ---------- 名师账号：三平台入口 ---------- */
+.account-title { font-size: 11px; color: var(--muted); font-weight: 600; margin-top: 2px; }
+.account-links { display: flex; gap: 7px; flex-wrap: wrap; }
+.acc-btn {
+  flex: 1; min-width: 78px; text-align: center; font-size: 12px; font-weight: 700;
+  padding: 8px 6px; border-radius: 9px; text-decoration: none; transition: transform .15s, filter .15s;
+}
+.acc-btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+.acc-bili { background: #e1f5fe; color: #0288d1; }
+.acc-douyin { background: #f3e8ff; color: #9333ea; }
+.acc-xhs { background: #ffe4e6; color: #e11d48; }
+
+/* ---------- 讲义推荐 ---------- */
+.reco-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.reco-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px;
+}
+.reco-main { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.reco-main b { font-size: 13.5px; }
+.reco-main small { font-size: 11px; color: var(--muted); }
+.reco-go { white-space: nowrap; font-size: 12px; font-weight: 700; color: var(--primary); text-decoration: none; background: var(--primary-soft); padding: 6px 12px; border-radius: 8px; }
+.reco-go:hover { background: #e0e7ff; }
+
+/* ---------- 电子书库 ---------- */
+.ebook-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+.ebook-card { border: 1px solid var(--border); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.ebook-info { display: flex; flex-direction: column; gap: 2px; }
+.ebook-info b { font-size: 14px; }
+.ebook-info small { font-size: 11.5px; color: var(--muted); }
+.ep-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.ep-link { font-size: 11px; font-weight: 700; padding: 4px 9px; border-radius: 6px; text-decoration: none; color: #fff; }
+.ep-weread { background: #07c160; } .ep-jd { background: #e1251b; }
+.ep-dedao { background: #1e293b; } .ep-ireader { background: #7c3aed; }
+.ep-link:hover { filter: brightness(1.1); }
+
+/* ---------- 打印样式 ---------- */
+@media print {
+  .topbar, .sidebar, .section-head, .btn, .mini-btn, .disclaimer, .tip-box, .toast { display: none !important; }
+  .main { padding: 0; max-width: none; }
+  .section { display: none !important; }
+  #section-handouts { display: block !important; }
+  .card { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; }
+  body { background: #fff; }
+}
+
+/* ---------- 站内视频 ---------- */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.video-card { background: #fff; border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); border-left: 4px solid var(--primary); }
+.video-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.video-card-actions { display: flex; gap: 2px; }
+.video-card-title { font-size: 15px; font-weight: 700; cursor: pointer; line-height: 1.5; }
+.video-card-title:hover { color: var(--primary); }
+.video-card-meta { display: flex; gap: 10px; font-size: 11.5px; color: var(--muted); margin-top: 8px; flex-wrap: wrap; }
+.video-player-wrap { display: flex; flex-direction: column; gap: 10px; }
+.bili-iframe { width: 100%; aspect-ratio: 16 / 9; border: none; border-radius: 10px; background: #000; }
+.video-player-tip { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* ---------- 文件列表 ---------- */
+.file-list { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.file-card { display: flex; align-items: center; gap: 14px; border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+.file-card:hover { border-color: #c7d2fe; background: #fafbff; }
+.file-icon { font-size: 28px; flex-shrink: 0; }
+.file-info { flex: 1; min-width: 0; }
+.file-title { font-weight: 700; font-size: 14px; }
+.file-meta { display: flex; gap: 10px; align-items: center; font-size: 11.5px; color: var(--muted); margin-top: 4px; flex-wrap: wrap; }
+.file-badge { background: var(--primary-soft); color: var(--primary); border-radius: 5px; padding: 1px 7px; font-weight: 700; }
+.file-note { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.file-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.file-input { width: 100%; padding: 10px; border: 1px dashed var(--border); border-radius: 10px; background: #fafbff; font-size: 13px; }
+
+/* ---------- 阅读器 ---------- */
+.reader-modal { align-items: center; }
+.reader-box { max-width: 1000px; width: 96%; height: 92vh; display: flex; flex-direction: column; }
+.reader-head-actions { display: flex; align-items: center; gap: 10px; }
+.reader-content { flex: 1; overflow: hidden; padding: 14px 20px; background: #f6f7fb; min-height: 0; }
+.pdf-iframe { width: 100%; height: 100%; border: none; border-radius: 8px; background: #fff; }
+.img-reader { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: auto; }
+.img-reader img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.text-reader { width: 100%; height: 100%; overflow: auto; background: #fff; padding: 20px; border-radius: 8px; white-space: pre-wrap; word-break: break-word; font-family: "PingFang SC", "Microsoft YaHei", monospace; font-size: 14px; line-height: 1.8; }
+.epub-viewer { width: 100%; height: 100%; background: #fff; border-radius: 8px; }
+.reader-loading { display: flex; align-items: center; justify-content: center; height: 100%; color: var(--muted); text-align: center; line-height: 2; }
+.reader-nav { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 12px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+
+/* ---------- 内置素材 ---------- */
+.material-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+.material-card { border: 1px solid var(--border); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+.material-card:hover { border-color: #c7d2fe; }
+.material-head { display: flex; align-items: center; gap: 8px; }
+.material-head b { font-size: 14px; }
+.material-body { font-size: 13px; color: #5b6270; line-height: 1.8; flex: 1; }
+.material-copy { align-self: flex-start; border: none; background: var(--primary-soft); color: var(--primary); border-radius: 7px; padding: 5px 10px; font-size: 11.5px; font-weight: 600; cursor: pointer; }
+.material-copy:hover { background: #e0e7ff; }
+#material-filter .filter-tab { padding: 6px 13px; font-size: 12px; }
+
+/* ---------- 打印样式调整 ---------- */
+@media print {
+  .file-actions, .file-input { display: none !important; }
+  .file-card { break-inside: avoid; }
+}
