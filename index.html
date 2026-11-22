@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="VPlfSNxHicQeBWG6LupOJy">
+<head data-page-node-id="oBL1avvCTAG0kiinV6uQwo">
+  <meta charset="UTF-8" data-page-node-id="QZlYbfnFgsBT7PhfKQagxA" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="NntYjJGSEI1z5PLnzoy2vU" />
+  <title>上岸计划 · 考公备考站</title>
+  <link rel="stylesheet" href="styles.css" data-page-node-id="3fj5APnL1YXzkCtiDbWMfx" />
+</head>
+<body data-page-node-id="IFaQmETRRHLxbzjqbmHzRg">
+  <!-- ============ 登录视图 ============ -->
+  <div id="login-view" class="login-view hidden" data-page-node-id="OlTbPCE1YcDExBExz4AjUM">
+    <div class="login-card" data-page-node-id="jTQfNbfcbDKVBDz6bjGPiR">
+      <div class="login-brand" data-page-node-id="zXiy1CiB2aYV14yq59DulD">
+        <div class="brand-logo" data-page-node-id="g7t12pdtgSqthfqVDQTZKJ">岸</div>
+        <h1 data-page-node-id="gJzK9eO0BvBZ7cMQAqqonH">上岸计划</h1>
+        <p data-page-node-id="P2TZuo8W7xFeZLAwHMnpyn">一站式考公备考 · 课程 / 日程 / 打卡 / 申论素材</p>
+      </div>
+
+      <div class="login-tabs" data-page-node-id="OlrRZ4PhSTg5PizV0gXwNd">
+        <button type="button" class="login-tab active" data-login-tab="phone" data-page-node-id="GHCSfkaYdIdxeBbegUFXaa">手机号登录</button>
+        <button type="button" class="login-tab" data-login-tab="wechat" data-page-node-id="L4dloJjUFuyYJ5zKqZHKpA">微信登录</button>
+      </div>
+
+      <div id="login-panel-phone" class="login-panel" data-page-node-id="9BNQVyErSCtMLdto7xvCwC">
+        <label class="field-label" for="phone-input" data-page-node-id="U0EZaALQIkfzhPUiEmpHCw">手机号</label>
+        <input id="phone-input" class="text-input" type="tel" inputmode="numeric" maxlength="11" placeholder="请输入 11 位手机号" data-page-node-id="zJ9YH7mdGVBLdY4ozv9BAP" />
+        <div id="phone-error" class="field-error" data-page-node-id="Fa2p6pHhgFR29kKBisHypd"></div>
+
+        <label class="field-label" for="code-input" data-page-node-id="DPq6DmiJhCEQYStch0s7J4">验证码</label>
+        <div class="code-row" data-page-node-id="kMbqCA3LDBpIHHbBxtpaFv">
+          <input id="code-input" class="text-input" type="text" inputmode="numeric" maxlength="6" placeholder="请输入验证码" data-page-node-id="l9wjnGHZSDHgqy8JSz03XL" />
+          <button id="send-code-btn" type="button" class="btn btn-outline code-btn" data-page-node-id="DzO9TcVIcUqbDdHFJPE5m1">获取验证码</button>
+        </div>
+        <div id="code-hint" class="field-hint" data-page-node-id="bwLloJfk0qalUwS4ql9bm8"></div>
+
+        <button id="phone-login-btn" type="button" class="btn btn-primary btn-block" data-page-node-id="ogURrEZfU9recCcLOCnKWC">登录 / 注册</button>
+      </div>
+
+      <div id="login-panel-wechat" class="login-panel hidden" data-page-node-id="142LuNRM9PkCQsKympkNgk">
+        <p class="wechat-note" data-page-node-id="esDVSOM0rjCwLOL7LMjd9y">使用微信快捷登录，一键同步你的备考进度。</p>
+        <button id="wechat-login-btn" type="button" class="btn btn-wechat btn-block" data-page-node-id="2UN36IoD2yGaVtgAw6fPrH">微信登录</button>
+        <p class="wechat-tip" data-page-node-id="3PaafhnfEgvvIG0EiB5zn7">提示：微信登录需在正式发布的网址下使用；本地预览请用手机号验证码。</p>
+      </div>
+
+      <div id="login-error" class="login-error" data-page-node-id="68GDBl4Rbb6iilPaR9TdBA"></div>
+    </div>
+  </div>
+
+  <!-- ============ 加载遮罩 ============ -->
+  <div id="boot-loading" class="boot-loading" data-page-node-id="A43NSjhK8AniWagKZ8Expx">
+    <div class="spinner" data-page-node-id="Qwpryz80PJ0UFEqpC8I8cA"></div>
+    <p data-page-node-id="NIQxnIaxDOCTosSLoB3BIm">正在加载你的备考数据…</p>
+  </div>
+
+  <!-- ============ 主应用 ============ -->
+  <div id="app-view" class="app-view hidden" data-page-node-id="madGgaAMoxH0UEOCtSW1o7">
+    <header class="topbar" data-page-node-id="F1YRprESDtdLSGChcazVDV">
+      <div class="topbar-left" data-page-node-id="JXnj7O2bHXBRNZ1q9N1UyN">
+        <div class="brand-logo small" data-page-node-id="tSgOzWxYGEns5DwTnkkfGR">岸</div>
+        <div data-page-node-id="uac4jMfJZujBRRKefF6iWZ">
+          <div class="app-name" data-page-node-id="4LgwqPoQ1l74TZWRy7FbOz">上岸计划</div>
+          <div class="app-sub" data-page-node-id="4IqkdJvgn8Ng39jlP5IDBc">每一步都算数</div>
+        </div>
+      </div>
+
+      <div class="countdown-chip" id="countdown-chip" title="距离考试还有" data-page-node-id="9h0z5DFsfDcekD58YgfK9j">
+        <span class="countdown-label" data-page-node-id="ddj4ddrwe1DPO0k6vnds6N">距离<span id="cd-exam-name" data-page-node-id="6V5cOvIXkiU5DindVb0zF4">考试</span></span>
+        <span class="countdown-days" id="countdown-days" data-page-node-id="IhoQ8tnRjhzjBLGYadpkCf">--</span>
+        <span class="countdown-unit" data-page-node-id="tBWJPZVj2GmFPg7h1JM63I">天</span>
+      </div>
+
+      <div class="topbar-right" data-page-node-id="ATFC2Of8F63UFfax7hqCES">
+        <button id="notify-btn" class="icon-btn" title="开启8点提醒通知" data-page-node-id="ezU4oUXj1llVGCU7adHm0i">🔔</button>
+        <div class="user-chip" data-page-node-id="V8Qq43UNDQaDOriLvMIG16">
+          <span id="user-avatar" class="user-avatar" data-page-node-id="vXOYuB0u3VbDR8xbGbHLrL">考</span>
+          <span id="user-name" class="user-name" data-page-node-id="Qc310EwXqJYZwhSNlK4KCd">备考人</span>
+        </div>
+        <button id="logout-btn" class="icon-btn" title="退出登录" data-page-node-id="x7F3mT6usm8gM2sNJ5I6jo">退出</button>
+      </div>
+    </header>
+
+    <div class="layout" data-page-node-id="Vh0IMyjzfkRvbB48yB5s36">
+      <nav class="sidebar" data-page-node-id="3LtGk8TPVUT8IvUdn6HPkI">
+        <button class="nav-item active" data-section="dashboard" data-page-node-id="9vcgZw34WOvxGlFBcDnobC"><span class="nav-ico" data-page-node-id="VsEVBiqDKlw6eB16oQRrhY">🏠</span>备考总览</button>
+        <button class="nav-item" data-section="schedule" data-page-node-id="AFmtWcDHpik94JN0MpCk8D"><span class="nav-ico" data-page-node-id="lJetZHjgE3GUfBG0stBCEU">📅</span>每日日程</button>
+        <button class="nav-item" data-section="courses" data-page-node-id="jGkjkfiZAYbbyHR1oJSQIQ"><span class="nav-ico" data-page-node-id="V75AtDJuHCQ2GH8LjlEj73">🎬</span>课程中心</button>
+        <button class="nav-item" data-section="books" data-page-node-id="X5MKfZA84ib3PGmsfyNIC2"><span class="nav-ico" data-page-node-id="wy6dCSo62hJO5XErOD1Jhc">📚</span>书单比价</button>
+        <button class="nav-item" data-section="news" data-page-node-id="afQPR7OLABpla8UPb7kSez"><span class="nav-ico" data-page-node-id="RaokBFrrdqZXX7bh1Cu4Fy">📰</span>申论素材</button>
+        <button class="nav-item" data-section="settings" data-page-node-id="3r3asiTNBWDDQhpOdFDqg3"><span class="nav-ico" data-page-node-id="6VQklOiZvfUAe9CR9m1yxW">⚙️</span>设置</button>
+        <div class="sidebar-foot" data-page-node-id="rRuHp4d4vWce68j4max4XQ">
+          <div class="motto" data-page-node-id="6DAVQFugd0UydY5vvKqxQm">今日事 · 今日毕<br data-page-node-id="5uzrZQ52rLZX6ZPe5lnyZh"/>上岸靠日拱一卒</div>
+        </div>
+      </nav>
+
+      <main class="main" data-page-node-id="dSnNIgIEX3wtw6YITtb6V8">
+        <!-- ===== 备考总览 ===== -->
+        <section id="section-dashboard" class="section active" data-page-node-id="vHCEECFVVN6qxSr2XGIFnf">
+          <div class="section-head" data-page-node-id="rDZffiEPNDhWqMDyA0Qfv5">
+            <h2 data-page-node-id="8KqdaGV6RwnnDePDHEFCSY">备考总览</h2>
+            <p id="today-str" class="muted" data-page-node-id="qEo8H65l4YjGTaQ721gqqP">今天</p>
+          </div>
+
+          <div class="dash-grid" data-page-node-id="DbU1QA7ZId5MfmLAIxMDpr">
+            <div class="card hero-card" data-page-node-id="GNVzZ2guL6IFr4kmeFIGr5">
+              <div class="hero-top" data-page-node-id="ZRUg6ZgGvCw5CeueHnhV1w">
+                <div data-page-node-id="LLg4GLyC6GY7lB0dxFuq7z">
+                  <div class="hero-label" data-page-node-id="mt9GR7JLCVXdb4nzdVopmN">距离 <span id="hero-exam-name" data-page-node-id="9I43v99EGYRu0coWFufrd7">考试</span></div>
+                  <div class="hero-count" data-page-node-id="CRii83OzQpjsJnOiIYQA4D"><span id="hero-days" data-page-node-id="oRQjIbFNyB7ZMPaEdl6HsZ">--</span><small data-page-node-id="LNLdop0tdNJFQPFGBzlLOd">天</small></div>
+                  <div id="hero-date" class="hero-date" data-page-node-id="e6oH0v6IjXgK9W8UGXtPxg">请在设置中设置考试日期</div>
+                </div>
+                <div class="hero-ring" data-page-node-id="uX5b0f9z8fQ9gkcXMMTz4s">
+                  <svg viewBox="0 0 120 120" data-page-node-id="pFrYaZifl3PEZz3d6sNjme">
+                    <circle class="ring-bg" cx="60" cy="60" r="52" data-page-node-id="L4zsqWFYZg3ZfUluTy7p9l"></circle>
+                    <circle id="hero-ring-fg" class="ring-fg" cx="60" cy="60" r="52" data-page-node-id="wUnCYOUB9GJTmwbqmkCBrJ"></circle>
+                  </svg>
+                  <div class="ring-text" data-page-node-id="yfAguUoHIgX2LX7FfHldIT"><span id="progress-pct" data-page-node-id="374JL3ph275KTKkXompcph">0%</span><small data-page-node-id="tUkmZtM7z6DYEI02yARdyG">今日完成</small></div>
+                </div>
+              </div>
+              <div class="hero-bottom" data-page-node-id="97ThXgjtbilviFPsEW4urv">
+                <div class="hero-stat" data-page-node-id="SDNvpMN6JogUX2e0qvXsmw"><b id="stat-today" data-page-node-id="lVp7Gc3Hg5H5VcKHhmdtYx">0/0</b><span data-page-node-id="XjrTK7v15gxuV65ltc5sup">今日任务</span></div>
+                <div class="hero-stat" data-page-node-id="37nno4WQsPNBVfrZZ2k5SE"><b id="stat-streak" data-page-node-id="oBCbUe3IoNraN5SrjQl2bj">0</b><span data-page-node-id="GvOCmhNT7TqgRDrLxifhxB">连续打卡(天)</span></div>
+                <div class="hero-stat" data-page-node-id="3ljdhtdnROooRY59rCiLoX"><b id="stat-minutes" data-page-node-id="7ifLPX6kd8EXwMMklQf2OF">0</b><span data-page-node-id="TSAPmXNN5c01JtpCLi2BWw">今日学习(分钟)</span></div>
+                <div class="hero-stat" data-page-node-id="WgUrzalvXSwwNAWFoRsFOd"><b id="stat-total" data-page-node-id="lhuvX7w0lkTHRbNQ5yt5oN">0</b><span data-page-node-id="8A4KGtWxs6B6dTczLPccJo">累计完成</span></div>
+              </div>
+            </div>
+
+            <div class="card reminder-card" id="reminder-card" data-page-node-id="i1mCRTwhnd3Xsm1QkWFd7U">
+              <div class="card-title" data-page-node-id="0Q9gd3x5sbuCKu23TSr4Gx"><span class="title-ico" data-page-node-id="naCdyupzJ4JnIqv2dAsH2L">⏰</span>8点未完成提醒</div>
+              <p id="reminder-status" class="reminder-status" data-page-node-id="E85hsBm3hi70NXeG2JHWEO">每天晚上 8 点提醒你完成当天任务</p>
+              <div id="reminder-unfinished" class="reminder-list" data-page-node-id="ELHUFFl7WMtwT8kPV5HIBG"></div>
+              <button id="enable-notify-btn" class="btn btn-outline btn-sm" data-page-node-id="IGmsdSXSE1A2amoWFbhKyo">开启浏览器提醒</button>
+            </div>
+          </div>
+
+          <div class="card" data-page-node-id="3mTBnDvvgwcJApDltiyJ3e">
+            <div class="card-title-row" data-page-node-id="BC79PSdiDGJMfKGREEwOsb">
+              <div class="card-title" data-page-node-id="B5jOCndE1juv9mjMC72yUI"><span class="title-ico" data-page-node-id="SMHhNgGGE6FTHhSBoPAbw6">✅</span>今日任务</div>
+              <button class="btn btn-primary btn-sm" id="quick-add-btn" data-page-node-id="smPx6L56hqPd7COKN2YrDj">+ 添加任务</button>
+            </div>
+            <div id="dash-task-list" class="task-list" data-page-node-id="7ZZSTx62O60EcEpA3Ann1W"></div>
+          </div>
+
+          <div class="two-col" data-page-node-id="HYiMWtlvv2mCqEMy9QcjWB">
+            <div class="card" data-page-node-id="Qe6TCqAbWf8rA9Lst2Dbwp">
+              <div class="card-title" data-page-node-id="AsfXPvEL8yDwznGPcwUfTP"><span class="title-ico" data-page-node-id="FH5E9ZJqhTSHzEDjkEdugD">📈</span>近 7 天完成情况</div>
+              <div id="week-chart" class="week-chart" data-page-node-id="j5FGtkCrpOGB5sRe0MCmqa"></div>
+            </div>
+            <div class="card" data-page-node-id="pdlyKxY4NBy3tucyrXKiaL">
+              <div class="card-title" data-page-node-id="y6K5wGxdK9aQjQ20XniYQF"><span class="title-ico" data-page-node-id="uxpDZvQAGpchPDfb2vUahE">💡</span>今日一句</div>
+              <div id="daily-quote" class="daily-quote" data-page-node-id="mMOQXjfC9MFn63NsocdN5G">自律即自由，上岸靠积累。</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 每日日程 ===== -->
+        <section id="section-schedule" class="section" data-page-node-id="g6zFzrTCrZubV0yRalJ2cU">
+          <div class="section-head" data-page-node-id="NstzuIgt7XKCUuPkz1ELHT">
+            <h2 data-page-node-id="D5Dus05Wwmo0KB9oP05fXx">每日日程</h2>
+            <div class="head-actions" data-page-node-id="EmgBustAKL4cITpANBcTEM">
+              <input type="date" id="schedule-date" class="date-input" data-page-node-id="X9zsvicI2UeGNSJUSJAlD5" />
+              <button class="btn btn-primary btn-sm" id="schedule-add-btn" data-page-node-id="DiSyRnlpuCxEDkwpDJ92le">+ 新建任务</button>
+            </div>
+          </div>
+          <div class="card" data-page-node-id="HrTQ5LwaBMcsM4QemtjNr5">
+            <div class="schedule-summary" id="schedule-summary" data-page-node-id="YrwKoowIHDjwJLtGLR6GVj"></div>
+            <div id="schedule-task-list" class="task-list" data-page-node-id="PqG0MljNcryF0PZEUB4Kdx"></div>
+          </div>
+          <div class="tip-box" data-page-node-id="7pgm5XNXf0BIjyAkT28Bfp">
+            <b data-page-node-id="Nq5hFQSBklAlCABxqKLoUl">小贴士：</b>在「课程中心」点击课程的「加入日程」，系统会自动在开课<b data-page-node-id="EDW3RZ9tfiz82zUeGFXfIu">前一天</b>生成观看任务；每天 20:00 会对未完成的任务发出提醒。
+          </div>
+        </section>
+
+        <!-- ===== 课程中心 ===== -->
+        <section id="section-courses" class="section" data-page-node-id="u1GDqheT27GaiovnWC6euF">
+          <div class="section-head" data-page-node-id="ln9UQ4goX4xzMOP7LhAFKI">
+            <h2 data-page-node-id="jwZ2W1euDM1Ht4Uthgwyow">课程中心</h2>
+            <p class="muted" data-page-node-id="hMumnpuvoqn4nWG4yqgFjk">精选行测 / 申论名师官方 B 站入口（免费内容与官方购买链接）</p>
+          </div>
+          <div class="filter-bar" data-page-node-id="yfHvbG5mUyvaVW0PJZt6DR">
+            <div class="filter-tabs" id="course-filter" data-page-node-id="vIbPisyjDEPmKfGOWxrDzW">
+              <button class="filter-tab active" data-cat="all" data-page-node-id="CIhR803CGeZ0EAsfPXuV3O">全部</button>
+              <button class="filter-tab" data-cat="行测" data-page-node-id="W41H2PnBUXsiGkizFNi57D">行测</button>
+              <button class="filter-tab" data-cat="申论" data-page-node-id="oIlXAuFAAwwaSmEf5kTjKB">申论</button>
+              <button class="filter-tab" data-cat="面试" data-page-node-id="uymIxhQABhyIOMxGhnn2rE">面试</button>
+            </div>
+            <input id="course-search" class="search-input" type="text" placeholder="搜索老师 / 机构 / 科目" data-page-node-id="1baGabDSCjDux1f3eZZ1lQ" />
+          </div>
+          <div id="course-grid" class="course-grid" data-page-node-id="NL6T53LdIMxADCYa1G2geg"></div>
+          <div class="disclaimer" data-page-node-id="eutduyvAFFql6McNIZBwdk">
+            说明：本页仅汇总公开信息与官方入口，不托管、不转存任何付费课程。购买付费课请前往老师/机构的官方渠道，注意辨别正版。
+          </div>
+        </section>
+
+        <!-- ===== 书单比价 ===== -->
+        <section id="section-books" class="section" data-page-node-id="DY9igYvjltO5DFVSIQTYts">
+          <div class="section-head" data-page-node-id="k6fAOAxXvgolVM90lyUG55">
+            <h2 data-page-node-id="E94D8vzedmQhVkopDU2jW1">书单比价</h2>
+            <p class="muted" data-page-node-id="jNLe37JlX50sRVCkrls3tP">一键直达各平台搜索，手动记录价格，自动标出最低价</p>
+          </div>
+          <div class="card" data-page-node-id="cx9oeYsy2yfLxEgS6Bg19s">
+            <div class="card-title" data-page-node-id="xcPaDJE556KxTCl0q8Y9f2"><span class="title-ico" data-page-node-id="zqyZ4LHq2EH82FBK8dvH3g">➕</span>添加书籍</div>
+            <div class="inline-form" data-page-node-id="Vy55g7ZAJ3FxZnWDlbnMr6">
+              <input id="book-title-input" class="text-input" type="text" placeholder="书名，如：粉笔 行政职业能力测验 2026" data-page-node-id="XEWxybnfG6dNPylXOsAUkD" />
+              <button id="book-add-btn" class="btn btn-primary btn-sm" data-page-node-id="C426B7ZrOKvhSsCCTsxmML">添加书单</button>
+            </div>
+          </div>
+          <div id="book-list" class="book-list" data-page-node-id="ROEC8aBE51HyzwmATxa3fN"></div>
+          <div class="disclaimer" data-page-node-id="6bCQZJEOTODLr6Q48c8Qnw">
+            说明：电商平台的实时价格需以各平台页面为准。本页提供的是各平台<b data-page-node-id="h9MtNYkiQYT5EnjeJ2GVxp">搜索入口</b>和你手动记录的价格对比，不抓取、不保证最低价，也不参与交易。
+          </div>
+        </section>
+
+        <!-- ===== 申论素材 ===== -->
+        <section id="section-news" class="section" data-page-node-id="9N6wIA3Zk7FEEPhhXHApEg">
+          <div class="section-head" data-page-node-id="0oW7JgQHfl5n9EVdjKjXz2">
+            <h2 data-page-node-id="gOYk0WmN5QeMEW0g1x1w83">申论素材</h2>
+            <p class="muted" data-page-node-id="IFA3FFSSwgfFIYLxDujqba">权威时政来源 + 你的素材笔记，为申论积累观点与案例</p>
+          </div>
+          <div class="card" data-page-node-id="NDoxEmhGCCnNrNH3hGbcx0">
+            <div class="card-title" data-page-node-id="D6XD9a182BdpgYiDqSCm6V"><span class="title-ico" data-page-node-id="hrKW7Jzn9KRayJ9uJ9m17F">🔗</span>每日时政来源</div>
+            <div id="news-sources" class="news-sources" data-page-node-id="2MOnFguGXaLeHQvasR5ajA"></div>
+          </div>
+          <div class="card" data-page-node-id="Ri0rUlaniv6uNTlFi8HDzv">
+            <div class="card-title-row" data-page-node-id="GvP5rJVrcKFgIVFcJ6UUQi">
+              <div class="card-title" data-page-node-id="dN17e8BqzYAYaDHxPYn1GM"><span class="title-ico" data-page-node-id="kRGM1MKPHosyRkMQZ6AraW">📝</span>我的素材笔记</div>
+              <button id="news-add-btn" class="btn btn-primary btn-sm" data-page-node-id="EChirGm8eSsP6I8sVIEcwk">+ 记一条</button>
+            </div>
+            <div id="news-note-list" class="note-list" data-page-node-id="VlyMpb5vaCP8F34ytzSCxj"></div>
+          </div>
+        </section>
+
+        <!-- ===== 设置 ===== -->
+        <section id="section-settings" class="section" data-page-node-id="AUyxajp8cdYtG78vzGJm3b">
+          <div class="section-head" data-page-node-id="3vBIip5gpwmVm5KiEFez5W">
+            <h2 data-page-node-id="r2wpPE1ZnyxrNRjSOGAXXI">设置</h2>
+            <p class="muted" data-page-node-id="RaCV2ogdGGX6H5X6D3CFyf">配置你的考试目标与提醒偏好</p>
+          </div>
+          <div class="card settings-card" data-page-node-id="mkLy4U6DRTzIrGRjcCF6yO">
+            <div class="setting-row" data-page-node-id="QoUbd6VpGPqTPtiTiWdVcS">
+              <div class="setting-info" data-page-node-id="MEXGYFbKuW57UyHKtFAb4b"><b data-page-node-id="U2dyzJmkHKKMvnXI8OzApn">考试名称</b><span data-page-node-id="AOKu9ATeMN5YVp8Ddil6E2">倒计时卡片上显示的考试名称</span></div>
+              <input id="set-exam-name" class="text-input setting-input" type="text" placeholder="如：2026 国考" data-page-node-id="OlBnsoegFvvDICEuvY7LIK" />
+            </div>
+            <div class="setting-row" data-page-node-id="vEfGE6RZMuXxAUMqnkcF2M">
+              <div class="setting-info" data-page-node-id="yGSYVRTbkCkJDEIiCGQHyQ"><b data-page-node-id="VTByX6EBkGdEH5bl8604PI">考试日期</b><span data-page-node-id="aF8TJq0JhcUYqCDFHrnvXF">用于计算距离考试的天数</span></div>
+              <input id="set-exam-date" class="date-input" type="date" data-page-node-id="J6flKwpQpmth6KjJie2JPn" />
+            </div>
+            <div class="setting-row" data-page-node-id="ruquJZcDqVAMGKPVwJ99JY">
+              <div class="setting-info" data-page-node-id="R5iOj6kj9jvh9a73wxfaYE"><b data-page-node-id="flWUt4QmJCXcCzbtmnlC7I">每日学习目标</b><span data-page-node-id="EGkdnLwqymUWAFU8CVIrWS">分钟，用于进度参考</span></div>
+              <input id="set-goal" class="text-input setting-input" type="number" min="0" step="30" placeholder="180" data-page-node-id="LWAqIFxu75m5OfB5WDh5Yb" />
+            </div>
+            <div class="setting-row" data-page-node-id="4fiz7pqAecCyUjlIbEiHFs">
+              <div class="setting-info" data-page-node-id="OvJTtFaeOR7sypWoHHxPii"><b data-page-node-id="JylLvqC4jFZKeazouHs4L7">每日提醒时间</b><span data-page-node-id="zaglxJtZUKeGICxdAM0smE">到点提醒未完成的任务</span></div>
+              <input id="set-remind-time" class="text-input setting-input" type="time" value="20:00" data-page-node-id="TUxbZkF591IdUTHJW8mF3y" />
+            </div>
+            <div class="setting-row" data-page-node-id="gQ8j3RxUnSg6jzCeN6VpHw">
+              <div class="setting-info" data-page-node-id="kfIyPCWGHLMsbO2AS6OyP6"><b data-page-node-id="36Gxb4v0OjK2oRHBtRBJJJ">专注锁（心理约束）</b><span data-page-node-id="k1yYr4RGzjHogBIBD8LbB4">开启后本站会在未完成任务时变灰提示，仅在本站生效</span></div>
+              <label class="switch" data-page-node-id="IOhDD1GxxrNeFlZYt0aGgr"><input id="set-focus-lock" type="checkbox" data-page-node-id="Yy6OLafvU0CSTVGCEGYdvI" /><span class="slider" data-page-node-id="yovt3Rmilqw4lqILS8vg44"></span></label>
+            </div>
+            <button id="save-settings-btn" class="btn btn-primary" data-page-node-id="c2HvAwxkgT2mB31iyQZaRq">保存设置</button>
+          </div>
+          <div class="card" data-page-node-id="rRsBwMpYekVSmMSU2LdzdC">
+            <div class="card-title" data-page-node-id="Xk1gtGMKpUsYLUfBh9vhUE"><span class="title-ico" data-page-node-id="3rDEJXXIEimT241YfTA9sw">ℹ️</span>关于提醒能力的说明</div>
+            <p class="muted small-text" data-page-node-id="6VPAQ5bSh222LyLV5iHkQ5">
+              网页只能在<b data-page-node-id="dsRnO1NFqeOAye6vHzWrK0">页面打开时</b>通过浏览器通知提醒你；关闭网页后无法后台推送，也无法强制禁止你访问其他娱乐网站或关闭其他软件（这是浏览器的安全边界，任何正规网页都做不到）。如需真正的强制约束，建议使用手机/系统的「专注模式」或家长控制工具。本站提供的是<b data-page-node-id="dSuziULROaHC7jAZdNGNal">强提醒 + 打卡激励 + 站内专注锁</b>。
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ============ 任务编辑弹窗 ============ -->
+  <div id="task-modal" class="modal hidden" data-page-node-id="pDXk4ACLpREyX0bqs6lrzs">
+    <div class="modal-mask" data-close-modal data-page-node-id="yT6cTPCZb4BCOOYLDWqGHR"></div>
+    <div class="modal-box" data-page-node-id="DuOS2efFCMEx3oVPoPuo6s">
+      <div class="modal-head" data-page-node-id="9PMxmYleh3XI9WKCHrv7pg"><h3 id="task-modal-title" data-page-node-id="84luDKifqinkunB3WPJBNw">新建任务</h3><button class="modal-close" data-close-modal data-page-node-id="GYBxgIH5ojPdM4UiWWldgZ">×</button></div>
+      <div class="modal-body" data-page-node-id="18UaYwfOcmN7EJtcCYuDby">
+        <label class="field-label" data-page-node-id="4DX7e2DDlmPfY9TIpheBzC">任务内容</label>
+        <input id="tm-title" class="text-input" type="text" placeholder="如：完成一套行测真题" data-page-node-id="BhqInZWehhRo7NfnSCRL8r" />
+        <div class="form-row" data-page-node-id="JfhxdiF4Y2GDxzDAOzcOdE">
+          <div data-page-node-id="Oemw1hbC5q81ZnGWCHf8gN">
+            <label class="field-label" data-page-node-id="HgggM9Ih9fVUcfSxNu5yHD">科目</label>
+            <select id="tm-subject" class="text-input" data-page-node-id="8GQSYebw12aruSZlMSGYi8">
+              <option value="行测" data-page-node-id="pvy4pNPnvWUxRCm3RznrFy">行测</option>
+              <option value="申论" data-page-node-id="e6EH11ery1cmC9l90OGhuI">申论</option>
+              <option value="常识" data-page-node-id="enEBTCBFhDQF0HjM2yrCx8">常识</option>
+              <option value="面试" data-page-node-id="fAl4NEvF25FLH51PyoVmhc">面试</option>
+              <option value="综合" data-page-node-id="Ei07oZdCbz5i74YZq1LOhL">综合</option>
+            </select>
+          </div>
+          <div data-page-node-id="gVdz3FM86B9JiuZT4PvCRM">
+            <label class="field-label" data-page-node-id="v3yli3mHIzNMwCGcEhi0fA">日期</label>
+            <input id="tm-date" class="date-input" type="date" data-page-node-id="RecHAbEkLsXIit9BGZPlSx" />
+          </div>
+        </div>
+        <div class="form-row" data-page-node-id="XH3GqfDAr2z1UB3N58ndNr">
+          <div data-page-node-id="Ur3qIEuV2T1b0WuytAKWBz">
+            <label class="field-label" data-page-node-id="AGKzMeSHyVSVNiNiBfC3Cp">开始时间</label>
+            <input id="tm-time" class="text-input" type="time" data-page-node-id="lXrv1ioEMXXwNy63Y2AkJg" />
+          </div>
+          <div data-page-node-id="I7qEW6p9QGlpehWuz6aM47">
+            <label class="field-label" data-page-node-id="osFrfiHzq15QbAwxq6dbGR">预计时长(分钟)</label>
+            <input id="tm-duration" class="text-input" type="number" min="0" step="10" value="60" data-page-node-id="kkhhFjSKt21PEnYohbbHdS" />
+          </div>
+        </div>
+        <label class="field-label" data-page-node-id="uF4NkAc4DNGoAA0cz6RpsU">备注（可选）</label>
+        <input id="tm-note" class="text-input" type="text" placeholder="补充说明" data-page-node-id="hMisV4XB01aChpNGnEz59l" />
+      </div>
+      <div class="modal-foot" data-page-node-id="jPghURbm9XWRcR2Zgv4l5l">
+        <button id="tm-delete" class="btn btn-danger btn-sm hidden" data-page-node-id="8hEY5wwbY3INuRZZNXdKEG">删除</button>
+        <div class="spacer" data-page-node-id="ZGm661tDOBhef9Uqgwbky7"></div>
+        <button class="btn btn-ghost" data-close-modal data-page-node-id="bQ0qFL9S3C7aCe2360UtvL">取消</button>
+        <button id="tm-save" class="btn btn-primary" data-page-node-id="ChgwQCgSb8A2zAID3GfIFA">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 笔记弹窗 ============ -->
+  <div id="note-modal" class="modal hidden" data-page-node-id="rH9ZCOJPax1nR2QV9PB7ye">
+    <div class="modal-mask" data-close-modal data-page-node-id="ebyGiDiGjnVpZbrkDm8taf"></div>
+    <div class="modal-box" data-page-node-id="T9GBlBkcdat6McZqMndh6P">
+      <div class="modal-head" data-page-node-id="tX7PTw6it0IEpbmdjqNH7Z"><h3 id="note-modal-title" data-page-node-id="Be4eeFk1zOhzLqOTSzZh3E">记一条素材</h3><button class="modal-close" data-close-modal data-page-node-id="G4I6MrcuXY8pY1X2Fdi7QA">×</button></div>
+      <div class="modal-body" data-page-node-id="5y5bj5SXIDymDtNzv8LS6K">
+        <label class="field-label" data-page-node-id="HEn3O7JrBFrHXYHvYFDJht">标题</label>
+        <input id="nm-title" class="text-input" type="text" placeholder="如：基层治理的金句" data-page-node-id="L6Hli4fpEvXMedr7m3UX6G" />
+        <label class="field-label" data-page-node-id="7nPa6t1yGdO4RLv1Udi5lH">主题分类</label>
+        <select id="nm-topic" class="text-input" data-page-node-id="PePmJtuMCVQwiogWGf161t">
+          <option value="申论素材" data-page-node-id="WQcZg4zTDA3tVbNcyjwCVn">综合素材</option>
+          <option value="人物事例" data-page-node-id="AMz929lbQ9EbBNhfyhTPak">人物事例</option>
+          <option value="金句表述" data-page-node-id="CT3FCSEfbB9fon3aCUkmM2">金句表述</option>
+          <option value="政策理论" data-page-node-id="vxFGBBBIx2iOJk8q40aapJ">政策理论</option>
+          <option value="社会热点" data-page-node-id="AjEPJNkFwBr2Pr4sgm9ZZA">社会热点</option>
+        </select>
+        <label class="field-label" data-page-node-id="QBnemdgV3UkA1kxfiCeubS">内容</label>
+        <textarea id="nm-content" class="text-input textarea" rows="4" placeholder="记录素材内容、可用观点…"></textarea>
+        <label class="field-label" data-page-node-id="V0xHprwOydtO3dnEhv5asP">来源链接（可选）</label>
+        <input id="nm-url" class="text-input" type="url" placeholder="https://" data-page-node-id="2cnEhdB9U2mtnhqCyK3nMm" />
+      </div>
+      <div class="modal-foot" data-page-node-id="pjjpWizlH2GnqWw6CgWvCq">
+        <button id="nm-delete" class="btn btn-danger btn-sm hidden" data-page-node-id="B5yCLDykA9O5bE0xhXeQBi">删除</button>
+        <div class="spacer" data-page-node-id="kVkImLaFxUvlJSI2G2AVBv"></div>
+        <button class="btn btn-ghost" data-close-modal data-page-node-id="WvuQIzkCAEdiKRiQ46whY6">取消</button>
+        <button id="nm-save" class="btn btn-primary" data-page-node-id="xF5rxZEVYSD06nEeDJqVhW">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 比价弹窗 ============ -->
+  <div id="price-modal" class="modal hidden" data-page-node-id="ygFlLw0yv0GZOqHsSWDL5W">
+    <div class="modal-mask" data-close-modal data-page-node-id="nKvMlIZOl8CagSEkf1mXIQ"></div>
+    <div class="modal-box" data-page-node-id="AOP8TYhjEFjeJ7mfMmssDU">
+      <div class="modal-head" data-page-node-id="ZjhrYJxHd06f00t7BR7f0P"><h3 id="price-modal-title" data-page-node-id="3gJln7dPohCFAW1OCTCu8q">记录价格</h3><button class="modal-close" data-close-modal data-page-node-id="lTPJrWEDMdKaGRPhANkQuc">×</button></div>
+      <div class="modal-body" data-page-node-id="DA1B487Jn47ZEuBfDc3gz8">
+        <div id="price-book-name" class="price-book-name" data-page-node-id="ARhOZU4OA5upPIWmPumcLS"></div>
+        <div id="price-platform-rows" data-page-node-id="VRNkhZaaZszNBkAUhKL7Il"></div>
+      </div>
+      <div class="modal-foot" data-page-node-id="xZLl2hLPuyzvsJz3X8G0an">
+        <div class="spacer" data-page-node-id="mnSG8SGGn3zvcoiTIStRpT"></div>
+        <button class="btn btn-ghost" data-close-modal data-page-node-id="MSXv3DD3VTt3bOUtcCzR9B">取消</button>
+        <button id="pm-save" class="btn btn-primary" data-page-node-id="VuKVT6I0K1LqpSbiVJpF2n">保存价格</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden" data-page-node-id="AAdtFXNHFUI3hxHxwyJNvt"></div>
+
+  <!-- 云服务 SDK（CDN，无构建步骤） -->
+  <script src="https://cdn.jsdelivr.net/npm/@tencent-ai/workbuddy-cloud-sdk@dev/lib/index.global.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
